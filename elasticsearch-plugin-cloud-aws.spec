@@ -5,7 +5,7 @@
 %define __os_install_post %{nil}
 
 Name:           elasticsearch-plugin-cloud-aws
-Version:        2.4.1
+Version:        2.7.1
 Release:        1%{?dist}
 Summary:        Elasticsearch plugin to leverage AWS services such as EC2 and S3.
 Group:          System Environment/Daemons
@@ -14,7 +14,7 @@ URL:            https://github.com/elasticsearch/elasticsearch-cloud-aws
 Source0:        https://download.elasticsearch.org/elasticsearch/elasticsearch-cloud-aws/elasticsearch-cloud-aws-%{version}.zip
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch:      noarch
-Requires:       elasticsearch >= 1.4.0, elasticsearch < 1.5.0
+Requires:       elasticsearch >= 1.7.0, elasticsearch < 1.8.0
 
 %description
 Elasticsearch plugin to leverage AWS services such as EC2 and S3
@@ -24,8 +24,8 @@ for discovery and backup.
 %setup -q -c
 
 %install
-mkdir -p %{buildroot}/%{base_install_dir}/plugins/cloud-aws
-cp *.jar %{buildroot}/%{base_install_dir}/plugins/cloud-aws
+%{__mkdir} -p %{buildroot}/%{base_install_dir}/plugins/cloud-aws
+%{__install} -D -m 755 *.jar %{buildroot}/%{base_install_dir}/plugins/cloud-aws
 
 %clean
 rm -rf %{buildroot}
@@ -38,5 +38,9 @@ rm -rf %{buildroot}
 %doc
 
 %changelog
+* Tue Sep 22 2015 Will Yardley <wby@axs.com>
+- Update for version 2.7.1 (ES v 1.7.x)
+- Fork from:
+  https://github.com/phrawzty/elasticsearch-plugin-cloud-aws-rpm
 * Fri May 15 2015 Dan <phrawzty@mozilla.com>
 - Init for v2.4.1 (ES v1.4.x)
