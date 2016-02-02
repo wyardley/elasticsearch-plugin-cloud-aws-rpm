@@ -5,16 +5,16 @@
 %define __os_install_post %{nil}
 
 Name:           elasticsearch-plugin-cloud-aws
-Version:        2.1.1
+Version:        2.1.2
 Release:        1%{?dist}
 Summary:        Elasticsearch plugin to leverage AWS services such as EC2 and S3.
 Group:          System Environment/Daemons
 License:        ASLv2.0
 URL:            https://github.com/elasticsearch/elasticsearch-cloud-aws
-Source0:        https://download.elastic.co/elasticsearch/release/org/elasticsearch/plugin/cloud-aws/2.1.1/cloud-aws-2.1.1.zip
+Source0:        https://download.elastic.co/elasticsearch/release/org/elasticsearch/plugin/cloud-aws/2.1.2/cloud-aws-2.1.2.zip
 BuildRoot:      %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch:      noarch
-Requires:       elasticsearch >= 2.1.1, elasticsearch < 2.2.0
+Requires:       elasticsearch >= 2.1.2, elasticsearch < 2.1.3
 
 %description
 Elasticsearch plugin to leverage AWS services such as EC2 and S3
@@ -39,6 +39,8 @@ rm -rf %{buildroot}
 %doc
 
 %changelog
+* Wed Feb 02 2016 Will Yardley <wby@axs.com>
+- Update for version 2.1.2 (ES v 2.1.2)
 * Wed Jan 27 2016 Will Yardley <wby@axs.com>
 - Update for version 2.1.1 (ES v 2.1.1)
 * Thu Nov 12 2015 Will Yardley <wby@axs.com>
